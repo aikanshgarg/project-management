@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :projects
+  resources :teams
   root 'home#index'
   
 	# modifying devise routes for adding the feature of user confirming their account through a link sent to their mail.
