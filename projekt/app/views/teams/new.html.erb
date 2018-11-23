@@ -1,5 +1,38 @@
-<h1>New Team</h1>
+<section class="section">
+	 <!-- Vue.js in action!
+	 	content_tag is rails helper which creates a div and assigns some data attributes as well, same as :-
+	 	<div data-id="1" data-team="somename"> 
+	 		With Vue.js we need to attach it with something to initialise, here it's id = "team-form"-->
+	<%= content_tag :div,
+			id: "team-form",
+			data: {
+				id: @team.id,
+				team: @team.to_json(except: [:id, :created_at, :update_at]),
+				users_attributes: @team.users.to_json(except: [:created_at, :update_at])
+			} do %>
+	
+		<div class="column is-5">
+			<h1 class="subtitle is-2">Create a new team</h1>
+			<%= render 'form', team: @team %>
+		</div>
 
-<%= render 'form', team: @team %>
+		<div class="column is-5">
+			<h2 class="subtitle is-3">Team Name</h2>
+			<table class="table is-fullwidth">
+				<thead>
+					<th>Name</th>
+					<th>Email</th>
+				</thead>
+				<tr>
+					<td>User Name</td><td>User Email</td>
+				</tr>
+				</table>
+			</div>
+		</div>
+	<% end %>
 
-<%= link_to 'Back', teams_path %>
+
+
+
+
+</section>
